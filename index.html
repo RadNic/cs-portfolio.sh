@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
     <style>
-    body{background-color:yellow;}
-    .head{color:rgb(0,0,255);}
-    .para{color:rgb(0,0,0);}
+    body{background-color:black;}
+    .head{color:yellow;}
+    .para{color:rgb(154,205,50);}
     #shasta{float:left;
     width:200px;}
-    p{font-size:17px;}
+    h1{text-decoration:underline;}
+    th{color:blue;}
+    p{font-size:115%;}
     #tableofcontents{position:fixed;
         margin-left:15px;
         float:right;
@@ -14,6 +16,14 @@
     }
     table, th, td {border:4px solid blue;}
     #divfortableofcontents{width:80%;}
+    #favs{
+            position:relative;
+            z-index:1;
+            background-color:rgb(255, 105, 180);
+            text-align:center;
+            font-size:100%;
+          }
+
     </style>
     <head>
         <link rel="stylesheet" href="navbar.css" type="text/css" />
@@ -23,7 +33,7 @@
         <table id="tableofcontents">
             <thead>
                 <tr>
-                    <th></th>
+                    <th>Parts of Website</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +45,7 @@
                 </tr>
             </tbody>
         </table>
-       <div id="divfortableofcontents"><h1 align="center" class="head">Portfolio</h1>
+       <div id="divfortableofcontents"><h1 align="center" class="head"><em>Portfolio</em></h1>
     <h2 align="center" class="head">About Myself</h2> <img id="shasta" src="http://www.summitps.org/uploads/sumhome/summit_home.png">
   <p class="para">I am a 10th grader at Summit Shasta in Daly City.
   At 5' 5", I play sports and enjoy being active everyday. The 
@@ -70,6 +80,31 @@
     introduced to them by my older cousin. I would go to his house 
     and play them every Friday and I noticed how fun they were, 
     especially with other people.</p>
+    <table id="favs" align="center">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Favorite</th>
+            </tr>
+        </thead>
+          <tbody>
+            <tr>
+              <td>Sport</td>
+              <td>Basketball</td>
+            </tr>
+            <tr>
+              <td>Animal</td>
+              <td>Monkey</td>
+            </tr>
+            <tr>
+              <td>Candy</td>
+              <td>Kit-Kat</td>
+            </tr>
+            <tr>
+              <td>Game Console</td>
+              <td>Xbox 360</td>
+              </tbody>
+              </table>
     <h2 align="center" class="head">My Hobbies</h2> <img id="shasta" src="http://www.psal.org/images/Articles/2015/201510141517132298.jpg">
     <p class="para">If you haven't noticed already, one of my 
     hobbies is basketball for the same reasons as before, I use 

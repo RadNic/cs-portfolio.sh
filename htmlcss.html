@@ -2,9 +2,11 @@
 <html>
     <style>
         body{background-color:yellow;}
-        p{font-size:17px;}
+        p{font-size:115%;}
           #shasta{float:left;
-    width:200px;}
+    width:200px;
+          }
+    h1{text-decoration:underline;}
      #tableofcontents{position:fixed;
          margin-left:15px;
          float:right;
@@ -13,12 +15,24 @@
      table, th, td {border:4px solid blue;}
      #divfortableofcontents{width:80%;
      }
+     #htmltags{text-align:center;
+            background-color:rgb(0,255,127);
+            margin-left:350px;
+            position:relative;
+            top:5px;
+
+     }
+     #csstags{text-align:center;
+            background-color:rgb(0,255,127);
+            margin-left:350px;
+            position:relative;
+            top:5px;}
     </style>
     <head>
         <title> </title>
     </head>
     <body>
-         <table align="right" id="tableofcontents">
+         <table id="tableofcontents" align="center">
             <thead>
                 <tr>
                     <th>Parts of Website</th>
@@ -33,7 +47,8 @@
                 </tr>
             </tbody>
             </table>
-        <div id="divfortableofcontents"><h1 align="center">HTML and CSS</h1>
+        <div id="divfortableofcontents">
+            <h1 align="center"><em>About HTML & CSS</em></h1><h2 align="center">HTML and CSS</h2>
 <h3 class="head" align="center">HTML</h3> <img id="shasta" src="https://marycsheehan.files.wordpress.com/2013/11/html2.jpg">
     <p class="para">HTML stands for HyperText Markup Language and 
     it is a series of short codes made in a text file by a person 
@@ -44,8 +59,46 @@
     using codes and tags which translates into the words or images you see on a website. Tags are codes that make up the website and are used in HTML 
     by changing the emphasis of the words on a website. You can 
     write tags by using the less than and greater than sign. Then,
-    when you enter a command in between both signs, such as p for paragraph or img to insert a picture, =f43tit creates a 
+    when you enter a command in between both signs, such as p for paragraph or img to insert a picture, it creates a 
     tag that makes a change to the website. </p> <br>
+     <table id="htmltags">
+            <thead>
+                <tr>
+                    <th>Tags</th>
+                    <th>What They Are Used For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&lt;body&gt;</td>
+                    <td>gives the body of the website</td>
+                </tr>
+                <tr>
+                    <td>&lt;div&gt;</td>
+                    <td>describes a certain section of the website</td>
+                </tr>
+                <tr>
+                    <td>&lt;em&gt;</td>
+                    <td>emphasizes and italicizes the designated word(s)</td>
+                </tr>
+                <tr>
+                    <td>&lt;img&gt;</td>
+                    <td>inserts an image into the website</td>
+                </tr>
+                <tr>
+                    <td>&lt;p&gt;</td>
+                    <td>designates a paragraph </td>
+                </tr>
+                <tr>
+                    <td>&lt;strong&gt;</td>
+                    <td>explains important text</td>
+                </tr>
+                <tr>
+                    <td>&lt;thead&gt;</td>
+                    <td>groups a tables header content</td>
+                </tr>
+            </tbody>
+        </table>
   <h3 class="head" align="center">How was HTML created and found?</h3>  
   <img id="shasta" src="http://news.mit.edu/sites/mit.edu.newsoffice/files/images/2013/20130318105145-1_0.jpg"><p class="para">The creator of HTML was physicist Tim Berners-Lee. 
   While he worked at CERN as an independent contractor, he proposed 
@@ -84,6 +137,36 @@
     background-color. But, if you wanted a specific shade of a 
     color, then you would put different values of r(ed), g(reen), 
     and b(lue) until you get the specific color that you want.</p>
+         <table id="csstags">
+            <thead>
+                <tr>
+                    <th>Tags</th>
+                    <th>What They Are Used For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&lt;color&gt;</td>
+                    <td>changes color of the text</td>
+                </tr>
+                <tr>
+                    <td>&lt;background-color&gt;</td>
+                    <td>changes color of the background</td>
+                </tr>
+                <tr>
+                    <td>&lt;border&gt;</td>
+                    <td>sets all of the border properties in one set</td>
+                </tr>
+                <tr>
+                    <td>&lt;float&gt;</td>
+                    <td>states whether or not a box or image should float</td>
+                </tr>
+                <tr>
+                    <td>&lt;margin&gt;</td>
+                    <td>sets margin on all sides of the object</td>
+                </tr>
+            </tbody>
+        </table>
     <h3 class="head" align="center">How was CSS found?</h3><img id="shasta" src="http://static.cw.newsfront.no/files/styles/crop_image_main_large/public/img/2014-10/h_kon-wium-lie-art_45690e_0.jpg"> <p class="para">
      The founder and creator of CSS is Hakon Wium Lie. Lie worked with Tim Berners-Lee at CERN. 
      He first proposed CSS and stlying a page on October 10, 1994. Besides 
