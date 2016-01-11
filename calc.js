@@ -10,11 +10,11 @@ button.addEventListener("click", doMath);
 
 function doMath() {
     if  (dropdown.value == "+"){
-        answer = parseInt(input1.value) + parseInt(input2.value);
+        answer = parseInt(input1.value) + parseInt(input2.value); //input1 is the first number entered, input2 is the second number entered
         display.innerHTML = answer;
     }
-    if  (dropdown.value == "-"){
-        answer = parseInt(input1.value) - parseInt(input2.value);
+    if  (dropdown.value == "-"){ //dropdown is how you choose the sign or operation that you want to use
+        answer = parseInt(input1.value) - parseInt(input2.value); 
         display.innerHTML = answer;
     }
     if  (dropdown.value == "x"){
@@ -30,11 +30,11 @@ function doMath() {
         display.innerHTML = answer;
     }
     if (dropdown.value == "sqrt"){
-        answer = Math.sqrt (parseInt(input1.value));
-        display.innerHTML = answer
+        answer = Math.sqrt (parseInt(input1.value)); //only one input because you only need one number to square root or cube root
+        display.innerHTML = answer;
     }
     if (dropdown.value == "cbrt"){
         answer = Math.cbrt (parseInt(input1.value));
-        display.innerHTML = answer
+        display.innerHTML = answer;
     }
 }
