@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <style>
+         table, th, td {border:4px solid blue;}
+     #divfortableofcontents{width:80%;
+     }
         body{background-image:url("http://managementscience.biz/wp-content/uploads/ktz/math-powerpoint-backgrounds-2zlqqforj10ee4xuslk5xm.jpg");background-repeat:no-repeat;float:inherit;background-size:cover;}
         #calc{position:relative;
             text-align:center;}
@@ -8,11 +11,11 @@
         h2{text-align:center;
         color:purple;}
         #djkhaled{position:absolute;
-            top:34%;
+            top:375px;
             left:100px;
         }
         #djkhaled1{position:absolute;
-        top:37%;
+        top:375px;
         left:750px;
         height:275px;
         width:475px;
@@ -21,14 +24,14 @@
         top:150px;}
         #djkhaled2{position:absolute;
         left:275px;
-        height:235px;
-        width:235px;
+        height:230px;
+        width:230px;
         bottom:425px;
         }
         #djkhaled3{position:absolute;
         left:900px;
-        height:235px;
-        width:235px;
+        height:230px;
+        width:230px;
         bottom:425px;
         }
         </style>
@@ -37,6 +40,28 @@
 	<title>Swaggy Calc</title>
 </head>
 <body>
+            <table id="tableofcontents">
+            <thead>
+                <tr>
+                    <th>Parts of Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="index.html">Who I am</a></td>
+                </tr>
+                <tr>
+                    <td><a href="htmlcss.html">HTML & CSS</a></td>
+                </tr>
+                <tr>
+                    <td><a href="infosite.html">Learn About the Warriors</a></td>
+                </tr>
+                <tr>
+                    <td><a href="calc.html">Calculator</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="divfortableofcontents">
     <h1>DJ Khaled's Calculator</h1> 
 <div id=calc><input type ="text" name="input1" style="width:50px;" id="input1">
     <select id="dropdown">
@@ -59,7 +84,7 @@
      
      <img id=djkhaled2 src="http://i.imgur.com/JQw1SZP.jpg"> 
      
-     <img id=djkhaled3 src="https://pbs.twimg.com/media/CVbSRKtWUAANdcN.jpg"> 
+     <img id=djkhaled3 src="https://pbs.twimg.com/media/CVbSRKtWUAANdcN.jpg"> </div>
 <script src="calc.js"></script>
 </body>
 </html>
