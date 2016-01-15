@@ -1,17 +1,17 @@
-var item1 = document.getElementById("item1");
+var item1 = document.getElementById("item1"); //each item is an id for the image, (item 1 is id for splash bros pic)
 var item2 = document.getElementById("item2");
 var item3 = document.getElementById("item3");
 var item4 = document.getElementById("item4");
 var item5 = document.getElementById("item5");
 var item6 = document.getElementById("item6");
-var info1 = document.getElementById("info1");
+var info1 = document.getElementById("info1");//each info matches with the div under the item so that when clicked, the information will be displayed after the image
 var info3 = document.getElementById("info3");
 var info5 = document.getElementById("info5");
 var info7 = document.getElementById("info7");
 var info9 = document.getElementById("info9");
 var info11 = document.getElementById("info11");
 
-item1.addEventListener("click", function(){
+item1.addEventListener("click", function(){ //each item matches with its info
     info1.innerHTML = "The Golden State Warriors Splash Brothers consist of their backcourt, starting point guard/MVP <br> Stephen Curry, and starting shooting guard Klay Thompson. Their name comes from <br> their ability to splash the net whenever they shoot a jumpshot or 3-pointer. <br> They do not only hold the record for the most 3-pointers made in a season <br> by an NBA duo, they each hold records of their own that make them a splash brother. <br> Stephen Curry has the record for the most 3-pointers made in a single season (286) <br> while Klay Thompson hold the record for most points made in a quarter (37). <br> They are an unstoppable duo that can score on any team and carry their <br> team to the NBA Finals whenever they want.";
 });
                        

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+                body {background-image:url("http://cdn1.theodysseyonline.com/files/2015/12/01/635846099354737216904341762_emoji.png");
+           background-size:cover;
+       }
+        .square{
+            width:400px;
+            height:160px;
+            text-align:center;
+            font-size:50pt;
+            font-weight:bold;
+        }
+        #tictactoetable{font-size:20pt;
+            font-weight:bold;
+        }
+        </style>
+        <script>
+            function startGame() {
+                
+                for (var i = 1; i <= 9; i = i + 1) {
+                    clearBox(i);
+                }
+                
+    document.turn = "=)";
+    if (Math.random() < 0.5){
+        document.turn = "=(";
+    }
+    document.winner = null;
+    setMessage(document.turn + " gets to start.");
+}
+
+function setMessage(msg) {
+    document.getElementById("message").innerText = msg;
+}
+function nextMove(square) {
+    if (document.winner != null) {
+        setMessage(document.winner + " already won the game.")
+    } else if (square.innerText == "") {
+    square.innerText = document.turn;
+    switchTurn();
+    } else {
+        setMessage("That square is already used.");
+    }
+}
+
+function switchTurn() {
+    
+    if (checkForWinner(document.turn)) {
+        setMessage("Congratulations, " + document.turn + "! You win!");
+        document.winner = document.turn;
+    } else if (document.turn == "=)") {
+        document.turn = "=(";
+        setMessage("It's " + document.turn + "'s turn!");
+    } else {
+    document.turn = "=)";
+    setMessage("It's " + document.turn + "'s turn!");
+    }
+}
+
+function checkForWinner(move) {
+    var result = false;
+    if (checkRow(1, 2, 3, move) ||
+        checkRow(4, 5, 6, move) ||
+        checkRow(7, 8, 9, move) ||
+        checkRow(1, 4, 7, move) ||
+        checkRow(2, 5, 8, move) ||
+        checkRow(3, 6, 9, move) ||
+        checkRow(1, 5, 9, move) ||
+        checkRow(3, 5, 7, move)) {
+            
+            result = true;
+        }
+        return result;
+}
+
+function checkRow(a, b, c, move) {
+    var result = false;
+    if (getBox(a) == move && getBox(b) == move && getBox(c) == move) {
+        result = true;
+    }
+    return result; 
+}
+
+function getBox(number){
+return document.getElementById("s" + number).innerText;
+}
+
+function clearBox(number) {
+    document.getElementById("s" + number).innerText = "";
+}
+        </script>
+    </head>
+    
+    <body onload="startGame();">
+                <table id="tableofcontents">
+            <thead>
+                <tr>
+                    <th>Parts of Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="index.html">Who I am</a></td>
+                </tr>
+                <tr>
+                    <td><a href="htmlcss.html">HTML & CSS</a></td>
+                </tr>
+                <tr>
+                    <td><a href="infosite.html">Learn About the Warriors</a></td>
+                </tr>
+                <tr>
+                    <td><a href="calc.html">Calculator</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tictactoe.html">Tic Tac Toe</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <h1 align="center">Welcome to Tic Tac Toe!</h1>
+    
+    <div id="message">Loading...</div>
+    
+<table border="1">
+    <tr>
+        <td id="s1" class="square" onclick="nextMove(this);"></td>
+        <td id="s2" class="square" onclick="nextMove(this);"></td>
+        <td id="s3" class="square" onclick="nextMove(this);"></td>
+    </tr>
+        <tr>
+        <td id="s4" class="square" onclick="nextMove(this);"></td>
+        <td id="s5" class="square" onclick="nextMove(this);"></td>
+        <td id="s6" class="square" onclick="nextMove(this);"></td>
+    </tr>
+        <tr>
+        <td id="s7" class="square" onclick="nextMove(this);"></td>
+        <td id="s8" class="square" onclick="nextMove(this);"></td>
+        <td id="s9" class="square" onclick="nextMove(this);"></td>
+    </tr>
+</table>
+<a href="javascript:startGame();">Start Over</a>
+                <table id="tictactoetable">
+            <thead>
+                <tr>
+                    <th>Tic Tac Toe Themes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="spongetictactoe.html">Spongebob Tic Tac Toe</a></td>
+                </tr>
+                <tr>
+                    <td><a href="djkhaledtictactoe.html">DJ Khaled Tic Tac Toe</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tictactoe.html">Tic Tac Toe</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
