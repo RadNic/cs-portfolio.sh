@@ -9,7 +9,7 @@ var dropdown = document.getElementById("dropdown");
 button.addEventListener("click", doMath);
 
 function doMath() {
-    if  (dropdown.value == "+"){
+    if  (dropdown.value == "+"){ //addition 
         answer = parseInt(input1.value) + parseInt(input2.value); //input1 is the first number entered, input2 is the second number entered
         display.innerHTML = answer;
     }
@@ -17,23 +17,23 @@ function doMath() {
         answer = parseInt(input1.value) - parseInt(input2.value); 
         display.innerHTML = answer;
     }
-    if  (dropdown.value == "x"){
+    if  (dropdown.value == "x"){ //mulitplication
         answer = parseInt(input1.value) * parseInt(input2.value);
         display.innerHTML = answer; 
     }
-    if  (dropdown.value == "/"){
+    if  (dropdown.value == "/"){ //division
         answer = parseInt(input1.value) / parseInt(input2.value);
         display.innerHTML = answer;
     }
-    if (dropdown.value == "^"){
+    if (dropdown.value == "^"){ //to the power of
         answer = Math.pow (parseInt(input1.value), parseInt(input2.value))
         display.innerHTML = answer;
     }
-    if (dropdown.value == "sqrt"){
+    if (dropdown.value == "sqrt"){ //square root
         answer = Math.sqrt (parseInt(input1.value)); //only one input because you only need one number to square root or cube root
         display.innerHTML = answer;
     }
-    if (dropdown.value == "cbrt"){
+    if (dropdown.value == "cbrt"){ //cube root
         answer = Math.cbrt (parseInt(input1.value));
         display.innerHTML = answer;
     }
