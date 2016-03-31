@@ -1,9 +1,77 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> </title>
+        <style>
+            #fix{position:absolute;
+    left:90%;
+    bottom:90%;
+        font-size:16pt;
+    }
+                        #xray{position:absolute;
+                width:500px;
+                height:575px;
+                z-index:-1;
+            }
+#break{position:absolute;
+            left:510px;
+            font-size:18pt;
+            }
+            #tibbreak{
+                position:absolute;
+                left:23%;
+                bottom:20%;
+            }
+            #fibbreak{
+                position:absolute;
+                left:11%;
+                bottom:12.5%;
+                
+            }
+        </style>
+        <script>
+              function myTib() {document.getElementById("break").innerHTML = "This tibia bone was the bigger bone of the two that I broke in my leg. Your tibia is part of your shin bone and you can feel it in your leg. This part made the loudest snap sound that I have ever heard and was the first bone that broke when I broke my leg. When I went up for the layup during my tournament game, my tibia hit the post of the basket first and snapped in half and remained in half until I  had surgery. By clicking fix me, you can see the pieces of metal that they put in my bone to make me part robot.";}
+              
+                function myFib() {document.getElementById("break").innerHTML = "wniogwenigow";}
+        </script>
+        <title>BROKEN</title>
     </head>
     <body>
-<a href="Modeling.html">Fix ME</a>
+                <table id="tableofcontents">
+            <thead>
+                <tr>
+                    <th>Parts of Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="index.html">Who I am</a></td>
+                </tr>
+                <tr>
+                    <td><a href="htmlcss.html">HTML & CSS</a></td>
+                </tr>
+                <tr>
+                    <td><a href="infosite.html">Learn About the Warriors</a></td>
+                </tr>
+                <tr>
+                    <td><a href="calc.html">Calculator</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tictactoe.html">Tic Tac Toe</a></td>
+                </tr>
+                <tr>
+                    <td><a href="Vindinium.html">Vindinium Info</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="Broken.html">Broken Leg Model</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <h1 align="center">Model Of My Broken Leg</h1>
+<a id="fix" href="Modeling.html">FIX ME</a>
+<button id="tibbreak" onclick="myTib()">Tibia Break</button>
+<button id="fibbreak" onclick="myFib()">Fibula Break</button>
+<img id="xray" src="http://i.imgur.com/9OktEzH.jpg">
+<p id="break"></p>
     </body>
 </html>
