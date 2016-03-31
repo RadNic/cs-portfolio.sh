@@ -19,13 +19,13 @@
         }
         </style>
         <script>
-            function startGame() {
+            function startGame() { //all javascript is the same but the only difference is the symbol changes to match the tic tac toe theme
                 
                 for (var i = 1; i <= 9; i = i + 1) {
                     clearBox(i);
                 }
                 
-    document.turn = "The Key";
+    document.turn = "The Key"; //X's changed to The Key and O's changed to Parfait so that it can match with the theme of the page
     if (Math.random() < 0.5){
         document.turn = "Parfait";
     }

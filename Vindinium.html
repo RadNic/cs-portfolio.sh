@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+                #tableofcontents{position:fixed;
+        margin-left:15px;
+        float:right;
+        right:100px;
+    }
+        table, th, td {border:4px solid blue;}
+#vindi{position:relative;
+width:500px;
+    margin-left:420px;
+}
+        </style>
+        <title>Vindinium</title>
+    </head>
+    <body>
+         <table id="tableofcontents">
+            <thead>
+                <tr>
+                    <th>Parts of Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="index.html">Who I am</a></td>
+                </tr>
+                <tr>
+                    <td><a href="htmlcss.html">HTML & CSS</a></td>
+                </tr>
+                <tr>
+                    <td><a href="infosite.html">Learn About the Warriors</a></td>
+                </tr>
+                <tr>
+                    <td><a href="calc.html">Calculator</a></td>
+                </tr>
+                <tr>
+                    <td><a href="tictactoe.html">Tic Tac Toe</a></td>
+                </tr>
+            </tbody>
+        </table>
+<h1 align="center">Vindinium Information</h1>
+<img id="vindi" src="http://source.coveo.com/images/blitz2016/tv.png">
+<h2>What Is Vindinium?</h2> <p>Vindinium is an online game between 4 players who have created their own bots. Each bot is created by many different javascript codes put together 
+by each player <br> in Cloud9, which is a coding website. The objective of the game is for your bot to have the most gold at the end of the 1200 turns. To gain this gold, you must <br> program 
+your bot to go to different mines and claim them or program them to steal another players mines. Another way to get these mines is to program your bot to <br> attack other bots because 
+once you kill an enemy bot, you gain all of the mines that they had. However, to avoid being killed, there are taverns throughout the map <br> that you can program your bot to go to so 
+that it can heal. This game enhances ones understanding of javascript by helping them practice using variables and <br> different commands to make their bot perform the different 
+strategies that they come up with.</p>
+<h2>My Whole Code</h2>
+<pre><code>var Bot = require('bot');
+var PF = require('pathfinding');
+//var bot = new Bot('b7b2495r', 'training', 'http://vindinium.org'); //Put your bot's code here and change training to Arena when you want to fight others.
+var bot = new Bot('lxlsfd6s', 'arena', 'http://52.53.211.7:9000'); //Put your bot's code here and change training to Arena when you want to fight others.
+var goDir;
+var Promise = require('bluebird');
+Bot.prototype.botBrain = function() {
+    return new Promise(function(resolve, reject) {
+        _this = bot;
+        //////* Write your bot below Here *//////
+        //////* Set `myDir` in the direction you want to go and then bot.goDir is set to myDir at the bottom *////////
+
+        /*                                      *
+         * This Code is global data!            *
+         *                                      */
+
+        // Set myDir to what you want and it will set bot.goDir to that direction at the end.  Unless it is "none"
+        var myDir;
+        var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+
+        var enemyBots = []; //these id's stand for each bot in the game
+        if(bot.yourBot.id != 1) enemyBots.push(bot.bot1);
+        if(bot.yourBot.id != 2) enemyBots.push(bot.bot2);
+        if(bot.yourBot.id != 3) enemyBots.push(bot.bot3);
+        if(bot.yourBot.id != 4) enemyBots.push(bot.bot4);
+
+        var enemyMines = []; //this is the code that tells my bot to steal other player mines
+        if(bot.yourBot.id != 1) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot1.mines); ///concat is basically talking about their combined mines
+        if(bot.yourBot.id != 2) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot2.mines);
+        if(bot.yourBot.id != 3) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot3.mines);
+        if(bot.yourBot.id != 4) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot4.mines);
+       
+        var combindedMines = enemyMines.concat(bot.freeMines); //combinded Mines = all enemy mines
+        //finds the closest enemy bot 
+        var closestBot = enemyBots[0];
+        for (i = 0; i < enemyBots.length; i++) {
+        if(bot.findDistance(myPos, [closestBot.pos.x,closestBot.pos.y]) > bot.findDistance(myPos,[enemyBots[i].pos.x , enemyBots[i].pos.y])){
+            closestBot = enemyBots[i];
+        }
+            }
+        var mostBot = enemyBots[0]; //this code says that if my bot doesn't have the most mines, then it will attack the player with the most mines
+        for(i = 0; i < enemyBots.length; i++) {
+            if (bot.yourBot.mineCount < enemyBots[i].mineCount) { //bot.yourBot.mineCount is my bot's mine count, enemyBots[i].mineCount is enemy with the most mines
+                mostBot = enemyBots[i]; 
+            }
+        }
+        
+        function boiii(){ 
+            return bot.findDistance (myPos, [closestBot.pos.x,
+            closestBot.pos.y]);
+        }
+        /*                                      *
+         * This Code Decides WHAT to do         *
+         *                                      */
+        var task;
+        if(bot.yourBot.life>=70){task="freeMines"} //this code says that if the bot has more or exactly 70 health, then it will claim a free mine
+        else if(bot.yourBot.life<=45){ //this code says once the health of my bot reaches 45 or less, then it will go to the tavern and heal, but only if the the task "freeMines" isn't true 
+            task = "chewy"; //else if means that the bot will run this code if the statements above are false
+        }
+        else if(boiii() <= 6 && bot.yourBot.life <= 60 && bot.yourBot.mineCount >= 5 ){ //this code says that if my bot's life is less than or equal to 60 and I have more or 5 
+        //mines, then to go to the tavern and heal 
+            task="chewy"; // "freeMines" is my task name that tells my bot to claim any free mines that have not been claimed ,"chewy" is my task name for healing, "steal" is my task name for stealing mines, "attack" is my task name to tell my bot to attack other players
+        }
+        else if(bot.freeMines == 0 && bot.yourBot.life >= 51){ //this is the code that tells my bot to steal other players mines, but only if there are no more free mines and my health is greater than or equal to 51
+            task="steal"
+        }
+    else{ //else means that if none of the statements or conditions above are true, then my bot will do the following task which is attack
+            task = "attack";
+        }
+        
+        
+
+        /*                                      *
+         * This Code Determines HOW to do it    *
+         *                                      */
+
+        // This Code find the nearest freemine and sets myDir toward that direction //
+        if(task === "freeMines") { //if the conditional that I set for freeMines is true, my bot has 70 or more heatlh, then it will run the following code and claim a free mine
+            var closestMine = bot.freeMines[0]; // tells my bot to find the closest free mine 
+            for(i = 0; i < bot.freeMines.length; i++) {
+                if(bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i]; //tells my bot to claim the mine if it hasn't been claimed already
+                }
+            }
+            console.log("Gimme that!"); //this is what my bot says when it claims a free mine
+            myDir = bot.findPath(myPos, closestMine); //changes my bot's direction to the closest free mine
+       }
+        
+        if(task === "attack"){ //this code tells my bot to attack the player with the most mines
+            console.log("Bouta mess him up!"); //this is what my bot says each turn it attacks
+            myDir = bot.findPath(myPos, [mostBot.pos.x , mostBot.pos.y]); //changes my path and direction towards the player with the most mines so I can attack them
+        }
+        
+        if(task === "chewy"){
+            var closestmedic = bot.taverns[0]; //my variable is closestmedic but can be renamed to anything else, closestmedic = closest tavern
+            for (i = 0; i < bot.taverns.length; i++){
+                if(bot.findDistance(myPos, closestmedic) > bot.findDistance(myPos, bot.taverns[i])) { 
+                 taverns = bot.taverns[i]; //tells my bot to go to tavern
+                }
+            }
+            console.log("Regaining Health"); //what my bot says while at the tavern
+            myDir = bot.findPath(myPos, closestmedic);} //tells my bot what direction to go in to get to the closest tavern
+        
+        if(task === "steal"){ //this code tells my bot how to steal a mine
+            var stealTarget = enemyMines[0]; //my target in this code is the enemy mines
+            for(i = 0; i < enemyMines.length; i++){
+                if(bot.findDistance(myPos, stealTarget) > bot.findDistance(myPos, enemyMines[i])){
+                    stealTarget = enemyMines[i]; //tells my bot to go to the mine of the player with the most and claim it
+                }
+            }
+            console.log("stealing mine") //what my bot says when stealing a mine
+            myDir = bot.findPath(myPos, stealTarget) //leads my bot to the enemy mine
+        }
+        
+        /*                                                                                                                              *
+         * This Code Sets your direction based on myDir.  If you are trying to go to a place that you can't reach, you move randomly.   *
+         * Otherwise you move in the direction set by your code.  Feel free to change this code if you want.                            */
+        if(myDir === "none") {
+            console.log("Going Random!");
+            var rand = Math.floor(Math.random() * 4);
+            var dirs = ["north", "south", "east", "west"];
+            bot.goDir = dirs[rand];
+        } else {
+            bot.goDir = myDir;
+        }
+
+
+
+        ///////////* DON'T REMOVE ANTYTHING BELOW THIS LINE *//////////////
+        resolve();
+    });
+}
+bot.runGame();
+</code></pre>
+<h2>My Bot's Code</h2> <p>First of all, let me introduce to you the different actions that my bot can do. My bot can claim any free mines in the map, attack other players, steal
+mines from the leading player, and heal itself at the tavern.</p>
+<pre><code>
+            var enemyBots = []; //these id's stand for each bot in the game
+        if(bot.yourBot.id != 1) enemyBots.push(bot.bot1);
+        if(bot.yourBot.id != 2) enemyBots.push(bot.bot2);
+        if(bot.yourBot.id != 3) enemyBots.push(bot.bot3);
+        if(bot.yourBot.id != 4) enemyBots.push(bot.bot4);
+
+        var task;
+        if(bot.yourBot.life>=70){task="freeMines"} //this code says that if the bot has more or exactly 70 health, then it will claim a free mine
+        else if(bot.yourBot.life<=45){ //this code says once the health of my bot reaches 45 or less, then it will go to the tavern and heal, but only if the the task "freeMines" isn't true 
+            task = "chewy"; //else if means that the bot will run this code if the statements above are false
+        }
+        else if(boiii() <= 6 && bot.yourBot.life <= 60 && bot.yourBot.mineCount >= 5 ){ //this code says that if my bot's life is less than or equal to 60 and I have more or 5 mines, then to go to the tavern and heal 
+            task="chewy"; // "freeMines" is my task name that tells my bot to claim any free mines that have not been claimed ,"chewy" is my task name for healing, "steal" is my task name for stealing mines, "attack" is my task name to tell my bot to attack other players
+        }
+        else if(bot.freeMines == 0 && bot.yourBot.life >= 51){ //this is the code that tells my bot to steal other players mines, but only if there are no more free mines and my health is greater than or equal to 51
+            task="steal"
+        }
+    else{ //else means that if none of the statements or conditions above are true, then my bot will do the following task which is attack
+            task = "attack";
+        }
+</code></pre>
+<p>This part of my code that you can see above shows the order of the tasks that I have coded and that you will see further down this website. Whenever my bot has 70 health or more, 
+it will claim a free mine if any are available. If that statement is false, then my bot will go to the first else if statement which tells it to heal. But, if the conditions are not 
+correct, meaning my bot has more than 45 health, then it will follow the next else if statement which tells it to stay healing as long as it has 5 or more mines and 60 or less health.
+The next else if statement that I have programmed into my bot is the if no statements above are true, then my bot will steal mines but only with 51 health or more. It steals the 
+mines of the player with the most mines instead of only looking for free mines. Finally, if none of the statements that I have listed are true, then my bot will resort to finding the 
+player in the lead and attacking them. 
+</p>
+
+<h2>Code for Going to Taverns</h2>
+<pre><code>        if(task === "chewy"){
+            var closestmedic = bot.taverns[0]; //my variable is closestmedic but can be renamed to anything else, closestmedic = closest tavern
+            for (i = 0; i < bot.taverns.length; i++){
+                if(bot.findDistance(myPos, closestmedic) > bot.findDistance(myPos, bot.taverns[i])) { 
+                 taverns = bot.taverns[i]; //tells my bot to go to tavern
+                }
+            }
+            console.log("Regaining Health"); //what my bot says while at the tavern
+            myDir = bot.findPath(myPos, closestmedic);} //tells my bot what direction to go in to get to the closest tavern</code></pre>
+            <p>This is the code that I used so that my bot will go visit taverns whenever it is at low health. The condition for this statement is task === "chewy" which basically 
+            stands for the tavern. I chose to name the task chewy instead of tavern. This is saying that whenever my bot chooses to run the task "chewy", run the code written under 
+            the task which basically tells my bot to find the closest tavern and go to it and heal when it has 45 health or less. In my if statement, what they are telling my bot 
+            to do is find the distance between itself and the closest tavern (bot.findDistance(myPos, closestmedic)) and the distance from itself and another tavern on the map 
+            (bot.findDistance(myPos, bot.taverns[i])). After, it compares the distances, which is shown by the greater than sign. If the distance between the bot to the closest 
+            tavern is greater than the distance from bot to another tavern, the if statement runs. The code inside the if statement is "closesmedic = bot.taverns[i]." If the 
+            if statement runs, then the tavern that is the closer of the two becomes the variable "closestmedic" instead of all of the other taverns. The console log of my code 
+            tells the program to type "Regaining Health" whenever my bot visits the tavern in order for me to know that the code for taverns is working. Additionally, the myDir
+            part of the code puts my bot on the path towards the tavern that my code tells it to, the closest tavern.</p>
+            
+<h2>Code Used for Claiming Free Mines</h2>
+<pre><code> if(task === "freeMines") { //if the conditional that I set for freeMines is true, my bot has 70 or more heatlh, then it will run the following code and claim a free mine
+            var closestMine = bot.freeMines[0]; // tells my bot to find the closest free mine 
+            for(i = 0; i < bot.freeMines.length; i++) {
+                if(bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i]; //tells my bot to claim the mine if it hasn't been claimed already
+                }
+            }
+            console.log("Gimme that!"); //this is what my bot says when it claims a free mine
+            myDir = bot.findPath(myPos, closestMine); //changes my bot's direction to the closest free mine
+       }</code></pre>
+       <p>The code above is what I used for my bot to claim free mines. As you can see, the structure of this code is similar to that of the code for going to taverns. I named 
+       this task "freeMines" in order to help me identify wherever in the code I wrote about taking a free 
+       mine. The variable "closestMine" contains the location of all of the free mines on the map when the game is first loaded. After running this loop through the "bot.freeMines," 
+       the bot compares its distance to the closest mine and its distance to another free mine. If the distance to the other mine is shorter, then the variable "closestMine" 
+       gets replaced with the data of that mine and my bot then goes over to claim it by using the console log below the actual code. This console log contains the quote "Gimme that!"
+       which appears on c9 when I run my bot and it runs this task. This console log also sets the bots path towards the free mine by using myDir or my direction by changing the 
+       bots direction in the direction of the free mine.</p>
+       
+<h1>Code Used for Attacking Other Players</h1>
+<pre><code> 
+        var mostBot = enemyBots[0]; //this code says that if my bot doesn't have the most mines, then it will attack the player with the most mines
+        for(i = 0; i < enemyBots.length; i++) {
+            if (bot.yourBot.mineCount < enemyBots[i].mineCount) { //bot.yourBot.mineCount is my bot's mine count, enemyBots[i].mineCount is enemy with the most mines
+                mostBot = enemyBots[i]; 
+            }
+        }
+
+        if(task === "attack"){ //this code tells my bot to attack the player with the most mines
+            console.log("Bouta mess him up!"); //this is what my bot says each turn it attacks
+            myDir = bot.findPath(myPos, [mostBot.pos.x , mostBot.pos.y]); //changes my path and direction towards the player with the most mines so I can attack them
+        }</code></pre>
+<p>The code shown above is what I used so that my bot could attack the player with the most mines. This code works by using the variable that I set "mostBot" and basically
+cycling through all of the enemies in the game and comparing the amount of mines they have to the amount my bot has. It cycles through all of them until it finds the player with 
+the most mines, aka mostBot, and then follows and attacks them because they would be equivalent to an enemyBot which is what I programmed my bot to attack. When this piece of code 
+is run, the program types "Bouta mess him up!" in c9 so that I know it is working. The variable mostBot contains the information of the player with the most mines, including its 
+position, hence the reason for putting myDir = bot.findPath(myPos, [mostBot.pos.x , mostBot.pos.y]). This sets my bots path towards the player with the most mines by taking the 
+current position of my bot and taking the position of the mostBot that I want to attack in account. After looking at these two positions, the program gives my bot directions to 
+get to the mostBot.</p>
+
+<h2>Code for Stealing Mines</h2>
+<pre><code>        
+              var enemyMines = []; //this is the code that tells my bot to steal other player mines
+        if(bot.yourBot.id != 1) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot1.mines); ///concat is basically talking about their combined mines
+        if(bot.yourBot.id != 2) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot2.mines);
+        if(bot.yourBot.id != 3) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot3.mines);
+        if(bot.yourBot.id != 4) enemyBots.push(bot.bot1); enemyMines = enemyMines.concat(bot.bot4.mines);
+       
+        var combindedMines = enemyMines.concat(bot.freeMines); //combinded Mines = all enemy mines
+
+            if(task === "steal"){ //this code tells my bot how to steal a mine
+            var stealTarget = enemyMines[0]; //my target in this code is the enemy mines
+            for(i = 0; i < enemyMines.length; i++){
+                if(bot.findDistance(myPos, stealTarget) > bot.findDistance(myPos, enemyMines[i])){
+                    stealTarget = enemyMines[i]; //tells my bot to go to the mine of the player with the most and claim it
+                }
+            }
+            console.log("stealing mine") //what my bot says when stealing a mine
+            myDir = bot.findPath(myPos, stealTarget) //leads my bot to the enemy mine
+        }</code></pre>
+<p>This is the code that I used so that my bot would be able to steal mines from the player in the lead along with attacking them. The first part of this code, the part that talks 
+about the enemy mines, is what makes my bot cycle through the mines of all enemies. The concat command combines all of the mines of the enemies and combindedMines is the variable 
+name that I gave to all of the mines that the enemy with the most mines owns. Then, getting into the actual code that makes my bot steal the mines, my task name for this is task === "steal". 
+My variable name for stealing the mines is called stealTarget and symbolizes the mine that I would like to steal. This code is finding the distance of my bot to the selected mine 
+to steal and my bots position to another mine and is telling my bot which mine to steal. However, the most crucial part of this code to me is the variable combindedMines because 
+of the fact that it shows all of the possible mines that my bot will and can potentially steal. Without it, my bot would not know of any of the other mines and would only claim 
+free mines in the map. Anyways, the console log of this code programs my bot to say "Stealing Mine" while it performs this task. The myDir of the console log also shows my bot 
+the direction and path to the enemy mine that I want it to steal.</p>
+    </body> 
+</html>

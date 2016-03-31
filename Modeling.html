@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+                    #xray{position:absolute;
+                width:500px;
+                height:575px;
+                z-index:-1;
+            }
+            #topscrew{
+                position:absolute;
+                left:16.5%;
+                bottom:59%;
+}
+            #bottomscrew{
+                position:absolute;
+                left:31.02%;
+                bottom:17.7%;
+            }
+            #nail{position:absolute;
+                left:20.7%;
+                bottom:45%;}
+            #tbreak{position:absolute;
+            left:26%;
+            bottom:31.5%;}
+            #top{position:absolute;
+            left:510px;
+            font-size:18pt;
+            }
+        </style>
+        <script>
+            function myTop() {document.getElementById("top").innerHTML = "This top screw in my leg that you can see in my x-ray is actually visible on my leg and you can actually feel it pretty clearly if you touched my leg. The purpose of this screw is to hold the big, long nail in my tibia bone in place and keeps it stable. Without it, the top part of the nail would not have the support need while my bone was forming back. This means that without the screw there, the nail would flop around in the bone and would damage the bone or not allow the bone to fully develop back. The reason for only one at the top is because as you can see, the size of the screw at the top is bigger than the size of the bottom two screws. They all have the same role, but the top is bigger since there is only one stabilizing that part of the nail, and since that top part of the tibia is larger than the bottom.";}
+            function myBottom() {document.getElementById("top").innerHTML = "The bottom two screws in my leg play a similar role to the bigger screw in the top part of my tibia. Just like the top screw, these bottom two screws keep the big nail in the middle of my bone in place and stabilized the nail while the tibia bone was recovering and growing back. However, the bottom two screws, as you can see in the image, are both smaller than the top screw. The reason for this is because of the fact that they are by my ankle. If the same screw were to be used near my ankle, it wouldn't fit because of the fact that it's too big and would pop out near my skin. So, the solution to this problem was to use two smaller screws which would also have the same effect on the nail as the bigger screw has.";}
+            function myBig() {document.getElementById("top").innerHTML = "The big nail in the middle of my tibia was what kept the bone straight and in place while it was recovering and growing back. It's role in my leg is a big part because not only did it allow my bone to grow back, but now it helps my bone become even more stable and makes it close to impossible to break my right leg again. This nail is all titanium so it is strong and is hard to bend which makes my bone only able to fracture. Additionally, since this nail is titanium, temperature also affects my leg. The colder it is, the more tense my right leg becomes compared to my left leg because the nail absorbs the cold to my bone and then spreads to my muscles. In contrast, when the temperature is hot, my right leg feels as if it was burning because of the heat being absorbed by the titanium, similar to if the temperature was cold.";}
+            function myBreak() {document.getElementById("top").innerHTML = "As you can see in my x-ray, there is a part in my tibia bone that looks bigger the the rest of it. This is exactly where the break of my leg was located. Since it broke in that spot, the bone grew back stronger and bigger since I would drink calcium heavy products each day. These foods and drinks helped calcify my bone which not only helped make it stronger and bigger, but also allowed for me to recover quicker than others. This stronger,  calcified bone has allowed for my leg to withstand certain impacts better than it usually would and I can definitely feel the difference between my bone before I broke it and after.";}
+        </script>
+        <title>Broken Leg</title>
+    </head>
+    <body>
+        <h1 align="center">Model of My Broken Leg</h1>
+        <button id="topscrew" onclick="myTop()">Top Screw</button>
+        <button id="bottomscrew" onclick="myBottom()">Bot Screws</button>
+        <button id="nail" onclick="myBig()">Big Nail in Bone</button>
+        <button id="tbreak" onclick="myBreak()">Break In Tibia</button>
+        <img id="xray" src="http://i.imgur.com/NzABVFl.jpg">
+        <p id="top"></p>
+    </body>
+</html>
