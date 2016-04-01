@@ -37,23 +37,67 @@
     bottom:90%;
         font-size:16pt;
     }
+    #map_img{position:absolute;
+    width:200px;
+    height:200px;
+    left:40%;
+    bottom:10%;}
+    #map_img2{position:absolute;
+    width:200px;
+    height:200px;
+    left:85%;
+    bottom:10%;
+    }
+        #map_img3{position:absolute;
+    width:200px;
+    height:200px;
+    left:55%; 
+    bottom:10%;
+    }
+        #map_img4{position:absolute;
+    width:200px;
+    height:200px;
+    left:70%; 
+    bottom:10%;
+    }
         </style>
         <script>
-            function myTop() {document.getElementById("top").innerHTML = "This top screw in my leg that you can see in my x-ray is actually visible on my leg and you can actually feel it pretty clearly if you touched my leg. The purpose of this screw is to hold the big, long nail in my tibia bone in place and keeps it stable. Without it, the top part of the nail would not have the support need while my bone was forming back. This means that without the screw there, the nail would flop around in the bone and would damage the bone or not allow the bone to fully develop back. The reason for only one at the top is because as you can see, the size of the screw at the top is bigger than the size of the bottom two screws. They all have the same role, but the top is bigger since there is only one stabilizing that part of the nail, and since that top part of the tibia is larger than the bottom.";}
+            function myTop() {document.getElementById("top").innerHTML = "This top screw in my leg that you can see in my x-ray is actually visible on my leg and you can actually feel it pretty clearly if you touched my leg. The purpose of this screw is to hold the big, long nail in my tibia bone in place and keeps it stable. Without it, the top part of the nail would not have the support need while my bone was forming back. This means that without the screw there, the nail would flop around in the bone and would damage the bone or not allow the bone to fully develop back. The reason for only one at the top is because as you can see, the size of the screw at the top is bigger than the size of the bottom two screws. They all have the same role, but the top is bigger since there is only one stabilizing that part of the nail, and since that top part of the tibia is larger than the bottom.";} //all of these functions are the same. They have the same format, purpose, and type of information. The only difference between these functions are their names which correspond to their function name in my html. These functions ccontain the information of each part of my leg that appears when the related button is clicked.
             function myBottom() {document.getElementById("top").innerHTML = "The bottom two screws in my leg play a similar role to the bigger screw in the top part of my tibia. Just like the top screw, these bottom two screws keep the big nail in the middle of my bone in place and stabilized the nail while the tibia bone was recovering and growing back. However, the bottom two screws, as you can see in the image, are both smaller than the top screw. The reason for this is because of the fact that they are by my ankle. If the same screw were to be used near my ankle, it wouldn't fit because of the fact that it's too big and would pop out near my skin. So, the solution to this problem was to use two smaller screws which would also have the same effect on the nail as the bigger screw has.";}
             function myBig() {document.getElementById("top").innerHTML = "The big nail in the middle of my tibia was what kept the bone straight and in place while it was recovering and growing back. It's role in my leg is a big part because not only did it allow my bone to grow back, but now it helps my bone become even more stable and makes it close to impossible to break my right leg again. This nail is all titanium so it is strong and is hard to bend which makes my bone only able to fracture. Additionally, since this nail is titanium, temperature also affects my leg. The colder it is, the more tense my right leg becomes compared to my left leg because the nail absorbs the cold to my bone and then spreads to my muscles. In contrast, when the temperature is hot, my right leg feels as if it was burning because of the heat being absorbed by the titanium, similar to if the temperature was cold.";}
             function myBreak() {document.getElementById("top").innerHTML = "As you can see in my x-ray, there is a part in my tibia bone that looks bigger the the rest of it. This is exactly where the break of my leg was located. Since it broke in that spot, the bone grew back stronger and bigger since I would drink calcium heavy products each day. These foods and drinks helped calcify my bone which not only helped make it stronger and bigger, but also allowed for me to recover quicker than others. This stronger,  calcified bone has allowed for my leg to withstand certain impacts better than it usually would and I can definitely feel the difference between my bone before I broke it and after.";}
+        
+        function showImg() {
+            document.getElementById("map_img").style.display = ""; //These functions, like the above functions for text, have the same format and a very small amount of differences. These differences are the name of the function and the id. The name of the function corresponds to the name that I inserted in the onclick command in the html and the id corresponds to the id that I gave to the image.  
+        }
+                function showImg2() {
+            document.getElementById("map_img2").style.display = "";
+        }
+                        function showImg3() {
+            document.getElementById("map_img3").style.display = "";
+        }
+                        function showImg4() {
+            document.getElementById("map_img4").style.display = "";
+        }
         </script>
         <title>Robot Leg</title>
     </head>
     <body>
-        <h1 align="center">Model of My Broken Leg</h1>
-        <button id="topscrew" onclick="myTop()">Top Screw</button>
-        <button id="bottomscrew" onclick="myBottom()">Bot Screws</button>
-        <button id="nail" onclick="myBig()">Big Nail in Bone</button>
-        <button id="tbreak" onclick="myBreak()">Break In Tibia</button>
+        <h1 align="center">Model of My Robot Leg</h1> 
+        <button id="topscrew" onclick="myTop()">Top Screw Info</button> <!--Each of these <button> tags have an id and an onclick function-->
+        <button id="bottomscrew" onclick="myBottom()">Bot Screws Info</button> <!--Each of the id's correspond to the appropriate part of javascript and css, javascript allowing the button to be clicked for the text to appear, css used to allow me to place the button wherever I want it on the website.-->
+        <button id="nail" onclick="myBig()">Big Nail in Bone Info</button> <!--Each function name, in this line it would be myBig(), corresponds to the part of javascript that is for it. In this case, myBig() corresponds to the part of javascript that says function myBig() {document.getElementById("top").innerHTML = "(info about this part of my leg)"-->
+        <button id="tbreak" onclick="myBreak()">Break In Tibia Info</button><!--The text in between the beginning of the button tag and the end of this tag is what the button says.-->
         <img id="xray" src="http://i.imgur.com/NzABVFl.jpg">
         <p id="top"></p>
-        <a id="again" href="Broken.html">Break My Leg Again</a>
+        <a id="again" href="Broken.html">Break My Leg Again</a> <!--This is the link that you can click in the top right of my fixed leg website to bring you back to my broken leg and the table to the rest of my website.-->
+   <img id="map_img" src="http://i.imgur.com/dCWaVLH.png" style="display: none;" width="400" height="400"/> <!--This is  a normal image tag.-->
+    <input type="submit" id="Map" value="What Top Screw?" onclick="showImg()"/> <!--This input tells us the type which is telling the button to submit the image when clicked, id, value which is  the text that is on the button, and onclick which makes the information appear when the button is clicked. This functions the same way as a regular button but is more for images.--> 
+    <img id="map_img2" src="http://i.imgur.com/aVv4D9Z.png" style="display: none;" width="400" height="400"/> <!--The image id is the same format but I have them numbered and they have different image links.-->
+    <input type="submit" id="Map" value="What Big Nail?" onclick="showImg2()"/> <!--Input is the same format but the function name is different and they are numbered.-->
+        <img id="map_img3" src="http://i.imgur.com/fF6RsyV.png" style="display: none;" width="400" height="400"/>
+    <input type="submit" id="Map" value="What Tibia Break?" onclick="showImg3()"/>
+        <img id="map_img4" src="http://i.imgur.com/zzoIU2d.png" style="display: none;" width="400" height="400"/>
+    <input type="submit" id="Map" value="What Bottom Screws?" onclick="showImg4()"/>
     </body>
 </html>
